@@ -1,0 +1,70 @@
+.main-sidebar {
+    height: 100%;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    flex-direction: column;
+    justify-content: var(--main-sidebar-alignment);
+    background-color: rgb(var(--layout-background-color));
+    width: 100%;
+    padding-top: var(--top-padding);
+    padding-bottom: var(--bottom-padding);
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    gap: var(--blocks-gap);
+}
+
+.transparent-sidebar {
+    background-color: transparent;
+}
+.transparent-sidebar.invert-sidebar .line {
+    background: transparent;
+}
+
+.main-sidebar > div {
+    padding: 0 var(--left-and-right-paddings);
+}
+
+.main-sidebar::-webkit-scrollbar { 
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.main-sidebar::-moz-scrollbar { 
+    width: 0;
+    height: 0;
+    display: none;
+    scrollbar-width: none;
+}
+
+.main-sidebar--line {
+    border-right: var(--line-width) solid rgba(var(--layout-text-color), var(--line-opacity));
+}
+
+.transparent-sidebar.main-sidebar--line {
+    border-image: linear-gradient(rgb(var(--section-color)) var(--section-point), rgb(var(--layout-text-color)) var(--section-point), rgb(var(--layout-text-color)) var(--footer-point), rgb(var(--footer-color)) var(--footer-point)) ;
+    border-image-slice: 1;
+}
+
+.main-sidebar--stretched > div {
+    flex-basis: calc(100% / var(--blocks-amount));
+}
+
+.main-sidebar > div {
+    border: 1px dashed transparent;
+}
+
+.main-sidebar .line-container--main-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-top) 0 var(--padding-bottom);
+    justify-content: var(--line-alignment);
+}
+
+.line {
+    width: 100%;
+    height: var(--line-width);
+    background-color: rgba(var(--layout-text-color), var(--line-opacity));
+}

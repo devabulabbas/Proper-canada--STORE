@@ -1,0 +1,190 @@
+{% liquid
+    if template.name == 'product'
+        assign metafield_files = product.metafields.custom.gallery.value
+    elsif template.name == 'blog'
+        assign metafield_files = blog.metafields.custom.gallery.value
+    elsif template.name == 'article'
+        assign metafield_files = article.metafields.custom.gallery.value
+    elsif template.name == 'page'
+        assign metafield_files = page.metafields.custom.gallery.value
+    elsif template.name == 'collection'
+        assign metafield_files = collection.metafields.custom.gallery.value
+    endif
+  %}
+
+  {% style %}
+  .id-{{ snippet_id }} {
+    --focal-point: {{ focal_point }};
+    --desktop-grid-type: {{ items_in_a_row }};
+    --grid-gap: {{ grid_gap }}px;
+    {% if image_radius == 'default' %}
+        --image-radius: {{ settings.images_and_sections_radius }};
+    {% else %}
+        --image-radius: {{ image_radius }};
+    {% endif %}
+  }
+
+  @media screen and (max-width: 500px) {
+    .id-{{ snippet_id }} {
+      --grid-gap: {{ mobile_grid_gap }}px;
+      --desktop-grid-type: {{ mobile_layout }};
+    }
+  }
+{% endstyle %}
+
+<div class="id-{{ snippet_id }}" {{ block.shopify_attributes }}>
+    <cascading-grid>  
+        <ul class="image-grid__grid image-grid__grid--{{ items_in_a_row }} image-grid__grid-mobile--{{ mobile_layout }} {% if section_width == 'narrow' %}image-grid__grid--narrow{% endif %} {% if image_ratio == 'original' %}grid{% endif %}" >
+        {% if metafield_files != blank %}
+            {% for media in metafield_files %}
+                {% if media.media_type == 'image' %}
+                    <li class="image-grid__item ratio-{{ image_ratio }} {% if image_ratio == 'original' %}grid-item grid-item-desktop--{{ items_in_a_row }} grid-item-mobile--{{ mobile_layout }}{% endif %}" data-media-id="{{ media.id }}">
+                        <modal-opener data-modal="#ProductModal-{{ section.id }}">
+                            <div class="image-grid__image">
+                                <div class="image-grid__image-wrapper {% if enable_image_zoom %}hoverable{% endif %}">
+                                    {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                                    <img draggable="false"
+                                        srcset="
+                                        {%- if media.width >= 165 -%}{{ media | image_url: width: 165 }} 165w,{%- endif -%}
+                                        {%- if media.width >= 375 -%}{{ media | image_url: width: 375 }} 375w,{%- endif -%}
+                                        {%- if media.width >= 550 -%}{{ media | image_url: width: 550 }} 550w,{%- endif -%}
+                                        {%- if media.width >= 750 -%}{{ media | image_url: width: 750 }} 7250w,{%- endif -%}
+                                        {%- if media.width >= 1100 -%}{{ media | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                        {%- if media.width >= 1500 -%}{{ media | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                        {%- if media.width >= 2200 -%}{{ media | image_url: width: 2200 }} 2200w,{%- endif -%}
+                                        {{ media | image_url }} {{ media.width }}w"
+                                        src="{{ media | image_url: width: 1445 }}"
+                                        sizes="
+                                        (min-width: {{ settings_page_width }}) calc(({{ settings_page_width }} - 200px) / 2),
+                                        (min-width: 750px) calc((100vw - 2rem) / 2),
+                                        calc((100vw - 3rem)/2)"
+                                        {% if section.index > 2 %}loading="lazy"{% endif %}
+                                        width="{{ media.width }}"
+                                        height="{{ media.height }}"
+                                        alt="{{ media.alt }}"
+                                    >
+                                    {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                                    {% if enable_image_zoom %}
+                                        {%- liquid 
+                                        if settings.typography_preset == 'avant_garde'
+                                            assign weight = settings.accent_icon_weight
+                                            if settings.swap_fonts
+                                                assign weight = settings.base_icon_weight
+                                            endif
+                                        else 
+                                            assign weight =  settings.base_icon_weight
+                                            if settings.swap_fonts
+                                                assign weight = settings.accent_icon_weight
+                                            endif
+                                        endif
+                                        -%}
+                                        <div class="zoom_icon">
+                                                {% if weight == 'regular' %}
+                                                    {% render 'icon-accordion-2', icon: 'zoom-in-regular' %}
+                                                {% elsif weight == 'medium' %}
+                                                    {% render 'icon-accordion-2', icon: 'zoom-in-medium' %}
+                                                {% elsif weight == 'bold' %}
+                                                    {% render 'icon-accordion-2', icon: 'zoom-in-bold' %}
+                                                {% endif %}
+                                        </div>
+                                        <button class="product__media-toggle quick-add-hidden {% if enable_image_zoom %}zoom-cursor{% endif %}" type="button" aria-haspopup="dialog" data-media-id="{{ media.id }}" tabindex="-1"></button>
+                                    {% endif %}
+                                </div>
+                                
+                            </div>
+                        </modal-opener>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% assign placeholders = 'product-1,product-2,product-3,product-4,product-5,product-6,product-1,product-2' | split: ',' %}
+            {% for placeholder in placeholders %}
+            <li class="image-grid__item ratio-{{ image_ratio }} {% if image_ratio == 'original' %}grid-item grid-item-desktop--{{ items_in_a_row }} grid-item-mobile--{{ mobile_layout }}{% endif %}" data-media-id="{{ forloop.index }}">
+                <modal-opener data-modal="#ProductModal-{{ section.id }}">
+                    <div class="image-grid__image">
+                        <div class="image-grid__image-wrapper {% if enable_image_zoom %}hoverable{% endif %}">
+                        {{ placeholder | placeholder_svg_tag: 'placeholder-svg ' }}
+                            {% if enable_image_zoom %}
+                                {%- liquid 
+                                if settings.typography_preset == 'avant_garde'
+                                    assign weight = settings.accent_icon_weight
+                                    if settings.swap_fonts
+                                        assign weight = settings.base_icon_weight
+                                    endif
+                                else 
+                                    assign weight =  settings.base_icon_weight
+                                    if settings.swap_fonts
+                                        assign weight = settings.accent_icon_weight
+                                    endif
+                                endif
+                                -%}
+                                <div class="zoom_icon">
+                                        {% if weight == 'regular' %}
+                                            {% render 'icon-accordion-2', icon: 'zoom-in-regular' %}
+                                        {% elsif weight == 'medium' %}
+                                            {% render 'icon-accordion-2', icon: 'zoom-in-medium' %}
+                                        {% elsif weight == 'bold' %}
+                                            {% render 'icon-accordion-2', icon: 'zoom-in-bold' %}
+                                        {% endif %}
+                                </div>
+                                <button class="product__media-toggle quick-add-hidden {% if enable_image_zoom %}zoom-cursor{% endif %}" type="button" aria-haspopup="dialog" data-media-id="{{ forloop.index }}" tabindex="-1"></button>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </modal-opener>
+            </li>
+            {% endfor %}
+        {% endif %}
+        </ul>  
+        {% if enable_image_zoom %}
+        <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
+          <div class="product-media-modal__dialog {% if settings.enable_buttons_zoom %}buttons-zoom{% endif %}" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
+            <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle button-close" aria-label="{{ 'accessibility.close' | t }}">
+              {% if weight == 'regular' %}
+                  {% render 'icon', icon: 'cross-regular' %}
+              {% elsif weight == 'medium' %}
+                  {% render 'icon', icon: 'cross-medium' %}
+              {% elsif weight == 'bold' %}
+                  {% render 'icon', icon: 'cross-bold' %}
+              {% endif %}
+            </button>
+    
+            <div class="product-media-modal__content gradient" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
+              {% if metafield_files != blank %}
+                {%- for media in metafield_files -%}
+                  {% if media.media_type == 'image' %}
+                      <img draggable="false"
+                          srcset="
+                          {%- if media.width >= 165 -%}{{ media | image_url: width: 165 }} 165w,{%- endif -%}
+                          {%- if media.width >= 375 -%}{{ media | image_url: width: 375 }} 375w,{%- endif -%}
+                          {%- if media.width >= 550 -%}{{ media | image_url: width: 550 }} 550w,{%- endif -%}
+                          {%- if media.width >= 750 -%}{{ media | image_url: width: 750 }} 7250w,{%- endif -%}
+                          {%- if media.width >= 1100 -%}{{ media | image_url: width: 1100 }} 1100w,{%- endif -%}
+                          {%- if media.width >= 1500 -%}{{ media | image_url: width: 1500 }} 1500w,{%- endif -%}
+                          {%- if media.width >= 2200 -%}{{ media | image_url: width: 2200 }} 2200w,{%- endif -%}
+                          {{ media | image_url }} {{ media.width }}w"
+                          src="{{ media | image_url: width: 1445 }}"
+                          sizes="(max-width: 768) calc(100vw - 2rem) , (min-width: 100vw) {{ settings_page_width }}, 100vw"
+                          loading="lazy"
+                          width="{{ media.width }}"
+                          height="{{ media.height }}"
+                          alt="{{ media.alt }}"
+                          data-media-id="{{ media.id }}"
+                      >
+                  {% endif %}
+                {%- endfor -%}
+              {% else %}
+              {% assign placeholders = 'product-1,product-2,product-3,product-4,product-5,product-6,product-1,product-2' | split: ',' %}
+                {% for placeholder in placeholders %}
+                  <div data-media-id="{{ forloop.index }}">
+                    {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </product-modal>
+      {% endif %} 
+    </cascading-grid>
+</div>

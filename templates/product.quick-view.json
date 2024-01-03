@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "quick-view": {
+      "type": "quick-view",
+      "blocks": {
+        "ee2e7f66-29a4-4015-a135-3801cb95a030": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "{{ product.vendor }}",
+            "dim_text": false,
+            "subtitle_size": "default",
+            "subtitle_tag": "h3"
+          }
+        },
+        "5e8c9327-e699-4289-b5d4-b055fc4f0862": {
+          "type": "title",
+          "settings": {
+            "title_size": "heading_m_uppercase",
+            "heading_tag": "h1"
+          }
+        },
+        "e8d14fca-ff07-4108-a172-9ef5277aecf6": {
+          "type": "rating",
+          "settings": {
+          }
+        },
+        "e4bc293e-9414-405c-86a5-eda53856380b": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "",
+            "dim_text": true,
+            "subtitle_size": "default",
+            "subtitle_tag": "h3"
+          }
+        },
+        "fd0a5581-6add-4a8a-85af-9389823c7d69": {
+          "type": "line",
+          "settings": {
+            "desktop_padding_top": 24,
+            "desktop_padding_bottom": 24,
+            "mobile_padding_top": 16,
+            "mobile_padding_bottom": 16
+          }
+        },
+        "63f93c87-7976-4d84-9caa-ec20c29b2cd6": {
+          "type": "price",
+          "settings": {
+            "show_badges": true
+          }
+        },
+        "67d18980-87f7-4387-855c-ca214f4f8fe8": {
+          "type": "variant_picker",
+          "settings": {
+            "show_label": true
+          }
+        },
+        "10bbe7f0-7c40-4f4c-8110-74a22653bbef": {
+          "type": "quantity_selector",
+          "settings": {
+            "show_label": false
+          }
+        },
+        "45ccea7b-527e-4a1c-b894-60ce2ec7f8f4": {
+          "type": "buy_buttons",
+          "settings": {
+            "stretch_buy_buttons": true,
+            "display_in_a_row": false,
+            "show_dynamic_checkout": true
+          }
+        },
+        "86996f65-15ec-4314-b3ad-40413dbddb06": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell a story, describe your brand or share announcements.<\/p>",
+            "dim_text": true,
+            "text_size": "body_s"
+          }
+        },
+        "c4c583df-841b-4c6f-8386-c43496f7ca63": {
+          "type": "more_details",
+          "settings": {
+            "button_label": "More details"
+          }
+        }
+      },
+      "block_order": [
+        "ee2e7f66-29a4-4015-a135-3801cb95a030",
+        "5e8c9327-e699-4289-b5d4-b055fc4f0862",
+        "e8d14fca-ff07-4108-a172-9ef5277aecf6",
+        "e4bc293e-9414-405c-86a5-eda53856380b",
+        "fd0a5581-6add-4a8a-85af-9389823c7d69",
+        "63f93c87-7976-4d84-9caa-ec20c29b2cd6",
+        "67d18980-87f7-4387-855c-ca214f4f8fe8",
+        "10bbe7f0-7c40-4f4c-8110-74a22653bbef",
+        "45ccea7b-527e-4a1c-b894-60ce2ec7f8f4",
+        "86996f65-15ec-4314-b3ad-40413dbddb06",
+        "c4c583df-841b-4c6f-8386-c43496f7ca63"
+      ],
+      "settings": {
+        "desktop_gallery_style": "arrows",
+        "swap_position": false,
+        "image_ratio": "square",
+        "focal_point": "center center",
+        "context_image_radius": "default",
+        "enable_video_looping": false
+      }
+    }
+  },
+  "order": [
+    "quick-view"
+  ]
+}

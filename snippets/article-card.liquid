@@ -1,0 +1,72 @@
+{%- liquid 
+    assign settings_page_width = settings.max_page_width | append: 'px'
+      if settings.max_page_width == 'full_width'
+      assign settings_page_width = '100vw'
+      endif
+  -%}
+
+<article class="article-card__container article-card__container--{{ blog_articles_count }} article-card__container--{{ settings.white_space }} {% if settings.show_lines %}article-card__container--lines{% endif %}{% if article.image == blank %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+    <a href="{{ article.url }}" class="article-card article-card--{{ settings.white_space }} article-card--{{ blog_articles_count }} {% if settings.show_lines %}article-card--lines{% endif %}">
+        <div class="article-card__info">
+            {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'title'-%}
+                    <h3 class="article-card__item article-card__title article-card__title--{{ settings.typography_preset }} {% if block.settings.title_size != 'default' %}{{ block.settings.title_size }}{% endif %} {% if block.settings.use_accent_color %}article-card__title--accent{% endif %}" id="Article-{{ article.id }}" {{ block.shopify_attributes }}>{{ article.title | escape }}</h3>
+                {%- when 'info' -%}
+                    {%- if block.settings.show_date or block.settings.show_author or block.settings.show_number_of_comments and article.comments_count > 0 and blog.comments_enabled? -%}
+                    <div class="article-card__item info info--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}"{{ block.shopify_attributes }}>
+                        {%- if block.settings.show_date -%}
+                            <span class="info__date">
+                            {{- article.published_at | date: format: 'abbreviated_date' -}}
+                            </span>
+                        {%- endif -%}
+                        {%- if block.settings.show_author -%}
+                            <span class="info__author">{{ article.author }}</span>
+                        {%- endif -%}
+                        {%- if block.settings.show_number_of_comments and article.comments_count > 0 and blog.comments_enabled? -%}
+                            <span class="info__comments-count">{% if article.comments_count == 1 %}{{ 'blogs.article.comments.one' | t: count: article.comments_count }}{% else %}{{ 'blogs.article.comments.other' | t: count: article.comments_count }}{% endif %}</span>
+                        {%- endif -%}
+                    </div>
+                {%- endif -%}
+                {%- when 'excerpt'-%}
+                {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                    <p class="article-card__item article-card__excerpt body-secondary-text--{{ settings.typography_preset }}" {{ block.shopify_attributes }}>
+                    {{ article.excerpt_or_content | strip_html }}
+                    </p>
+                {%- endif -%}
+                {%- when 'read_more'-%}
+                <div class="article-card__item article-card__button" {{ block.shopify_attributes }}>
+                    <object>
+                        <a class="article-card__link link-button button--{{ settings.typography_preset }} {% if settings.enable_animated_underline %}link-button--underline{% endif %}" href="{{ article.url }}" aria-label="{{ block.settings.button_label }}">{{ block.settings.button_label }}</a>
+                    </object>
+                </div>
+            {%- endcase -%}
+            {%- endfor -%}
+        </div>
+        {%- if article.image -%}
+            <div class="article-card__image-wrapper">
+                <div class="article-card__image {% if section.settings.image_ratio != 'original' %}ratio-{{ section.settings.image_ratio }}{% endif %}">
+                    {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                    <img  draggable="false"
+                    srcset="{%- if article.image.width >= 375 -%}{{ article.image | image_url: width: 375 }} 375w,{%- endif -%}
+                    {%- if article.image.width >= 450 -%}{{ article.image | image_url: width: 450 }} 450w,{%- endif -%}
+                    {%- if article.image.width >= 550 -%}{{ article.image | image_url: width: 550 }} 550w,{%- endif -%}
+                    {%- if article.image.width >= 750 -%}{{ article.image | image_url: width: 750 }} 750w,{%- endif -%}
+                    {%- if article.image.width >= 1100 -%}{{ article.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                    {%- if article.image.width >= 1500 -%}{{ article.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {{ article.image | image_url }} {{ article.image.width }}w"
+                    src="{{ article.image | image_url: width: 1000 }}"
+                    sizes="(min-width: {{ settings_page_width }}px) {{ settings_page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"                   
+                    alt="{{ article.image.alt | escape }}"
+                    {% if lazy_load %}loading="lazy"{% endif %}
+                    width="{{ article.image.width }}"
+                    height="{{ article.image.height }}"
+                    class="motion-reduce"
+                    >
+                    {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                </div>
+            </div>
+        {%- endif -%}
+    </a>
+  </article>
+  

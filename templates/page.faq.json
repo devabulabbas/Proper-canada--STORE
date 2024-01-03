@@ -1,0 +1,179 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "hide_heading": false,
+        "heading_size": "default",
+        "heading_tag": "h2",
+        "section_width": "wide",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "44c0eeee-5eb8-4608-930e-1c59003f157a": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19235367223602__44c0eeee-5eb8-4608-930e-1c59003f157a-1685371335bc1cbdcc-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQ",
+            "heading_size": "heading_m_uppercase",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--19235367223602__44c0eeee-5eb8-4608-930e-1c59003f157a-1685371335bc1cbdcc-1"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "center_text": false,
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": -160,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "46adb6af-230f-483e-9a2a-640b3354c2f1": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-0": {
+          "type": "topic",
+          "settings": {
+            "heading": "Topic",
+            "text": "<p>Optional description of the group of questions.<\/p>",
+            "dim_text": true,
+            "button_label": "",
+            "button_link": "",
+            "target_blank": false,
+            "button_style": "solid"
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-1": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-2": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-3": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "ad58450b-5c53-4cae-8964-acb0174bd2fa": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-4": {
+          "type": "topic",
+          "settings": {
+            "heading": "Topic",
+            "text": "<p>Optional description of the group of questions.<\/p>",
+            "dim_text": true,
+            "button_label": "",
+            "button_link": "",
+            "target_blank": false,
+            "button_style": "solid"
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-5": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-6": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        },
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-7": {
+          "type": "tab",
+          "settings": {
+            "heading": "Collapsible tab heading",
+            "text": "<p>Collapsible tab content.<\/p>",
+            "icon": "none",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-0",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-1",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-2",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-3",
+        "ad58450b-5c53-4cae-8964-acb0174bd2fa",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-4",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-5",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-6",
+        "template--19235367223602__46adb6af-230f-483e-9a2a-640b3354c2f1-168537123473b0750f-7"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "",
+        "text": "",
+        "dim_text": false,
+        "button_label": "",
+        "button_link": "",
+        "target_blank": false,
+        "button_style": "solid",
+        "section_width": "narrow",
+        "subheading_size": "default",
+        "subheading_tag": "h3",
+        "heading_size": "default",
+        "heading_tag": "h2",
+        "collapsible_tabs_size": "default",
+        "topic_heading_size": "heading_xs_uppercase",
+        "text_size": "body_l",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "44c0eeee-5eb8-4608-930e-1c59003f157a",
+    "46adb6af-230f-483e-9a2a-640b3354c2f1"
+  ]
+}

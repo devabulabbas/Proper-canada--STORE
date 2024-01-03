@@ -1,0 +1,22 @@
+.content-text--minimal_uppercase,
+.content-text--minimal_basic,
+.content-text--classic,
+.content-text--contrast {
+    font: var(--base-body-m-font);
+}
+.content-text--minimal_heavy,
+.content-text--duet {
+    font: var(--base-body-l-font);
+}
+.content-text--avant_garde {
+    font: var(--accent-body-m-font);
+}
+.content-text--brutalist {
+    font: var(--accent-heading-xs-font);
+}
+.tabs--narrow .section-tabs__header,
+.tabs--narrow .section-tabs__content-wrapper {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,69 @@
+{{ 'miscellaneous.css' | asset_url | stylesheet_tag }}
+{{ 'search.css' | asset_url | stylesheet_tag }}
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{{ 'social-media.css' | asset_url | stylesheet_tag }}
+{{ 'account.css' | asset_url | stylesheet_tag }}
+{{ 'menu.css' | asset_url | stylesheet_tag }}
+{{ 'localization.css' | asset_url | stylesheet_tag }}
+<style>
+  i.icon-swym-wishlist {
+font-family: 'swym-font';
+font-style: normal;
+vertical-align: middle;
+}
+i.icon-swym-wishlist+span {
+vertical-align: middle;
+}
+i.icon-swym-wishlist:after {
+content: '';
+font-size: 130%;
+line-height: 18px;
+text-align: center;
+display: inline;
+}
+/*content rendered after swym is ready to avoid showing block/invalid chars*/
+.swym-ready i.icon-swym-wishlist:after {
+content: '\f004';
+}
+</style>
+<div class="miscellaneous-container miscellaneous-container--{{ section.settings.grid_columns }} miscellaneous-container--{{ miscellaneous_settings.block_width }} {% if section.id contains 'header' %}miscellaneous-container--header{% elsif section.id contains 'footer' %}miscellaneous-container--footer{% else %}miscellaneous-container--{{ section.id }}{% endif %} miscellaneous-container--{{ miscellaneous_settings.miscellaneous_horizontal_alignment }}" style="--miscellaneous-vertical-alignment: {{ miscellaneous_settings.miscellaneous_vertical_alignment }};
+--miscellaneous-horizontal-alignment: {{ miscellaneous_settings.miscellaneous_horizontal_alignment }};
+--miscellaneous-view: {{ miscellaneous_settings.miscellaneous_style }}; --item-index: {{ for_loop.index }}" {{ block.shopify_attributes }}>
+    <div class="miscellaneous__items miscellaneous__items--{{ miscellaneous_settings.miscellaneous_style }} miscellaneous__items--{% if miscellaneous_settings.miscellaneous_vertical_alignment == 'space-between' or miscellaneous_settings.miscellaneous_horizontal_alignment == 'space-between' %}stretched{% endif %} {%- if miscellaneous_settings.miscellaneous_reverse_order -%}miscellaneous__items--reverse{%- endif -%}">
+        {% if miscellaneous_settings.menu != blank %}
+            {%- render 'menu', menu_settings: miscellaneous_settings, menu_settings_id: miscellaneous_settings.menu, block: block, blocks: section.blocks -%}
+        {% endif %}
+        {% if miscellaneous_settings.enable_country or miscellaneous_settings.enable_language %}
+            {%- render 'country-and-language', country-and-language_settings: miscellaneous_settings -%}
+        {% endif %}
+        {% if miscellaneous_settings.social_media_style != 'disable' and section.id == 'header' or miscellaneous_settings.social_media_style != 'disable' and section.id == 'secondary-header' %}
+            {%- render 'social-media', social-media_settings: miscellaneous_settings, section_settings: section.settings -%}
+        {% endif %}
+        {% assign IsNoFooter = true %}
+        {% if section.id contains 'footer' %}
+            {% assign IsNoFooter = false %}
+        {% endif %}
+        {% if miscellaneous_settings.search_style != 'disable' or miscellaneous_settings.account_style != 'disable' or miscellaneous_settings.cart_style != 'disable' and IsNoFooter and settings.disable_shopping_functionality == false %}
+            <div class="miscellaneous__subblock miscellaneous__subblock--{% if miscellaneous_settings.miscellaneous_reverse_order %}reverse{% endif %} miscellaneous__subblock--horizontal-{{ miscellaneous_settings.miscellaneous_horizontal_alignment }} miscellaneous__subblock--vertical-{{ miscellaneous_settings.miscellaneous_vertical_alignment }}">
+        
+              <a href="#swym-wishlist" class="swym-wishlist">
+  <i aria-hidden="true" focusable="false" role="presentation" class="icon icon-swym-wishlist"></i>
+</a>  
+          {% if miscellaneous_settings.search_style != 'disable' %}
+                    {%- render 'search', search_settings: miscellaneous_settings -%}
+                {% endif %}
+                {% if miscellaneous_settings.account_style != 'disable' %}
+                    {%- render 'account', account_settings: miscellaneous_settings -%}
+                {% endif %}
+                {% if miscellaneous_settings.cart_style != 'disable' and IsNoFooter and settings.disable_shopping_functionality == false %}
+                    {%- render 'cart', cart_settings: miscellaneous_settings -%}
+                {% endif %}
+            </div>
+        {% endif %}
+        {% unless section.id contains 'footer' %}
+            {% if miscellaneous_settings.show_burger_menu %}
+                {%- render 'burger-menu', burger-menu_settings: miscellaneous_settings -%}
+            {% endif %}
+        {% endunless %}
+    </div>
+</div>

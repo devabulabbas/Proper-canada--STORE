@@ -1,0 +1,224 @@
+{%- liquid 
+    if settings.typography_preset == 'avant_garde'
+        assign close_weight = settings.accent_icon_weight
+        if settings.swap_fonts
+                assign close_weight = settings.base_icon_weight
+        endif
+	else 
+        assign close_weight =  settings.base_icon_weight
+        if settings.swap_fonts
+                assign close_weight = settings.accent_icon_weight
+        endif
+	endif
+-%}
+
+{%- if settings.enable_cart_drawer -%}
+{%- render 'cart-drawer' -%}
+{%- endif -%}
+{%- if settings.action_after_adding == 'success' and settings.disable_shopping_functionality == false -%}
+    {{ 'cart-notification.css' | asset_url | stylesheet_tag }}
+    {{ 'cart-items.css' | asset_url | stylesheet_tag }}
+<cart-notification>
+  <div id="CartNotification-Overlay"class="overlay"></div>
+  <div id="cart-notification" class="cart-notification focus-inset popup-wrapper slider-container-js" aria-modal="true" aria-label="{{ 'cart.item_added' | t }}" role="dialog" tabindex="-1">
+    {% style %}
+        .cart-notification {
+            --desktop-grid-type: 3;
+            color: rgb(var(--layout-text-color));
+        }
+        @media screen and (max-width: 768px) {
+            .cart-notification  {
+            --desktop-grid-type: {{ settings.mobile_layout }};
+            }
+        }
+    {% endstyle %} 
+      <div class="cart-notification-wrapper">
+          <div class="button-wrapper {% if settings.enable_buttons_zoom %}buttons-zoom{% endif %}">
+              <button type="button" class="cart-notification__close modal__close-button button-close" aria-label="{{ 'accessibility.close' | t }}">
+                {% if close_weight == 'regular' %}
+                    {% render 'icon', icon: 'cross-regular' %}
+                {% elsif close_weight == 'medium' %}
+                    {% render 'icon', icon: 'cross-medium' %}
+                {% elsif close_weight == 'bold' %}
+                    {% render 'icon', icon: 'cross-bold' %}
+                {% endif %}
+              </button>
+          </div>
+          <h2 class="cart-notification__heading success-color {% if settings.center_text %}center{% endif %} cart-notification__heading--{{ settings.typography_preset }}">{{ 'cart.item_added' | t: cart_name: settings.cart_name }}</h2> 
+          <div class="cart-notification-product" id="cart-notification-wrapper">
+          {%- if cart != empty -%}
+          {%- for item in cart.items -%}
+            <div id="cart-notification-product-{{ item.key }}">
+              <div  class="cart-item">
+                {% if item.image or settings.product_placeholder %}
+                <span class="media-wrapper" {% if settings.disable_right_click %}oncontextmenu="return false"{% endif %}>
+                    {% if item.image %}
+                        <img class="cart-item__image"
+                            srcset="{{ item.image | image_url: width: 50 }} 1x, {{ item.image | image_url: width: 100 }} 2x"
+                            src="{{ item.image | image_url: width: 50 }}"
+                            alt="{{ item.image.alt | escape | split: '#' | first }}"
+                            loading="lazy"
+                            draggable="false"
+                            sizes="calc(50px * 1)"
+                            width="50"
+                            height="64"/>
+                    {% elsif settings.product_placeholder %}
+                        <img class="cart-item__image cart-item__image--placeholder"
+                            srcset="{{ settings.product_placeholder | image_url: width: 50 }} 1x, {{ settings.product_placeholder | image_url: width: 100 }} 2x"
+                            src="{{ settings.product_placeholder | image_url: width: 50 }}"
+                            alt="{{ settings.product_placeholder.alt | escape | split: '#' | first }}"
+                            loading="lazy"
+                            draggable="false"
+                            sizes="calc(50px * 1)"
+                            width="50"
+                            height="64"/>
+                    {% endif %}
+                </span>
+                {% endif %}
+                <div class="cart-item__info">
+                    <div class="cart-item__details">
+                        <a href="{{ item.product.url }}" class="cart-item__name hover-opacity card__title--{{ settings.typography_preset }}">{{ item.product.title | escape }}</a>
+                        {%- if settings.cart_drawer_show_vendor -%}
+                        <p class="cart-item__vendor card__vendor--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}">{{ item.product.vendor }}</p>
+                        {%- endif -%}
+                        {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                            {%- if item.product.has_only_default_variant == false or item.properties.size != 0 -%}
+                                {%- if item.product.has_only_default_variant == false -%}
+                                <dl>
+                                    {%- for option in item.options_with_values -%}
+                                    <div class="product-option card__vendor--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}">
+                                        <dt>{{ option.name }}: </dt>
+                                        <dd>{{ option.value }}</dd>
+                                    </div>
+                                    {%- endfor -%}
+                                </dl>
+                                {%- endif -%}
+                               
+                                <dl>
+                                {%- for property in item.properties -%}
+                                    {%- assign property_first_char = property.first | slice: 0 -%}
+                                    {%- if property.last != blank and property_first_char != '_' -%}
+                                    <div class="product-option card__vendor--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}">
+                                        <dt>{{ property.first }}: </dt>
+                                        <dd>
+                                        {%- if property.last contains '/uploads/' -%}
+                                            <a href="{{ property.last }}" target="_blank">
+                                            {{ property.last | split: '/' | last }}
+                                            </a>
+                                        {%- else -%}
+                                            {{ property.last }}
+                                        {%- endif -%}
+                                        </dd>
+                                    </div>
+                                    {%- endif -%}
+                                {%- endfor -%}
+                                </dl>
+                             
+                            {%- endif -%}
+                            {%- if item.selling_plan_allocation != nil -%}
+                                <div class="product-option card__vendor--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}">{{ item.selling_plan_allocation.selling_plan.name }}</div>
+                            {%- endif -%}
+                        {%- endif -%}
+                            <div class="cart-item__price-wrapper card__title--{{ settings.typography_preset }}">
+                                {%- if item.original_price != item.final_price -%}
+                                    <dl class="cart-item__discounted-prices">
+                                    <dt class="visually-hidden">
+                                        {{ 'products.product.price.sale_price' | t }}
+                                    </dt>
+                                    <dd class="price price--end sale-color">
+                                        <price-money><bdi>{{ item.final_price | money }}</bdi></price-money>
+                                    </dd>
+                                    <dt class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                </dt>
+                                <dd class="price--on-sale {% if settings.dim_text %}dim{% endif %}">
+                                    <s class="price price-item--regular price--end">
+                                    <price-money><bdi>{{ item.original_price | money }}</bdi></price-money>
+                                    </s>
+                                </dd>
+                                    </dl>
+                                {%- else -%}
+                                    <span class="price price--end">
+                                    <price-money><bdi>{{ item.final_price | money }}</bdi></price-money>
+                                    </span>
+                                {%- endif -%}
+                                {%- if item.variant.available and item.unit_price_measurement -%}
+                                <div class="unit-price card__vendor--{{ settings.typography_preset }} dim">
+                                <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                <price-money><bdi>&#40;{{ item.variant.unit_price | money }}</bdi></price-money>
+                                <span aria-hidden="true">/</span>
+                                <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                    {{- item.variant.unit_price_measurement.reference_value -}}
+                                {%- endif -%}
+                                {{ item.variant.unit_price_measurement.reference_unit }}&#41;
+                                </div>
+                            {%- endif -%}
+                            </div>
+                            <ul class="discounts card__vendor--{{ settings.typography_preset }} {% if settings.dim_text %}dim{% endif %}" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                {%- for discount in item.line_level_discount_allocations -%}
+                                  <li class="discounts__discount">
+                                    {% if close_weight == 'regular' %}
+                                      {% render 'icon-accordion-2', icon: 'price-tag-alternative-regular' %}
+                                    {% elsif close_weight == 'medium' %}
+                                            {% render 'icon-accordion-2', icon: 'price-tag-alternative-medium' %}
+                                    {% elsif close_weight == 'bold' %}
+                                            {% render 'icon-accordion-2', icon: 'price-tag-alternative-bold' %}
+                                    {% endif %}
+                                    {{ discount.discount_application.title }}
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                        <p class="cart-nitification__quantity body-secondary-text--{{ settings.typography_preset }}">{{ 'cart_drawer.quantity' | t }}: {{ item.quantity }}</p>
+                    </div>
+                    <div class="cart-item__price-wrapper card__title--{{ settings.typography_preset }}">
+                        {%- if item.original_line_price != item.final_line_price -%}
+                        <dl class="cart-item__discounted-prices cart-item__discounted-prices--column">
+                            <dt class="visually-hidden">
+                            {{ 'products.product.price.sale_price' | t }}
+                            </dt>
+                            <dd class="price price--end sale-color">
+                            <price-money><bdi>{{ item.final_line_price | money }}</bdi></price-money>
+                            </dd>
+                            <dt class="visually-hidden">
+                                {{ 'products.product.price.regular_price' | t }}
+                            </dt>
+                            <dd class="price--on-sale {% if settings.dim_text %}dim{% endif %}">
+                                <s class="price price-item--regular price--end">
+                                <price-money><bdi>{{ item.original_line_price | money }}</bdi></price-money>
+                                </s>
+                            </dd>
+                        </dl>
+                        {%- else -%}
+                        <span class="price price--end">
+                            <price-money><bdi>{{ item.original_line_price | money }}</bdi></price-money>
+                        </span>
+                        {%- endif -%}
+                    </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+          {%- endif -%}
+          </div>
+          <div class="cart-notification__links {% if settings.enable_buttons_zoom %}buttons-zoom{% endif %}">
+              <form action="{{ routes.cart_url }}" method="post" id="cart-notification-form">
+              <button class="button solid-button button--{{ settings.typography_preset }}" name="checkout">{{ 'sections.cart.checkout' | t }}</button>
+              </form>
+              <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button outlined-button button--{{ settings.typography_preset }}">
+                {{ 'cart_drawer.view' | t: cart_name: settings.cart_name }}
+            </a>
+          </div>
+          {% if settings.enable_cart_recommendations %}
+          {%- render 'cart-recommendations', cart_recommendations_settings: settings, desktop_grid: 3 -%}
+          {% endif %}
+      </div>
+  </div>
+</cart-notification>
+{% endif %}
+
+{% schema %}
+{
+    "name": "t:sections.cart-drawer.name"
+}
+{% endschema %}

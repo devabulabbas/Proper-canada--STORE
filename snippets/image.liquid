@@ -1,0 +1,52 @@
+{% style %}
+  .image-container--{{ block.id }} {
+    --image-vertical-alignment: {{ image_settings.image_vertical_alignment }};
+    --image-horizontal-alignment: {{ image_settings.image_horizontal_alignment }};
+  }
+{% endstyle %}
+{% liquid
+  assign settings_page_width = settings.max_page_width | append: 'px'
+  if settings.max_page_width == 'full_width'
+  assign settings_page_width = '100vw'
+  endif
+%}
+<div class="image-container image-container--{{ block.id }} image-container--{{ section.settings.grid_columns }} image-container--{{ image_settings.block_width }}" style="--image-alignment: {{ image_settings.image_alignment }}; --focal-point: {{ image_settings.image.presentation.focal_point }}; --item-index: {{ for_loop.index }}" data-block-index="{{ for_loop.index0 }}" {{ block_item.shopify_attributes }}>
+  {{ 'image.css' | asset_url | stylesheet_tag }}
+  {% if image_settings.block_image_link != blank %}
+  <a href="{{ image_settings.block_image_link }}" {% if image_settings.settings.image_target_blank %}target="_blank"{% endif %} class="image ratio-{{ image_settings.image_ratio }}" style="{% if image_settings.context_image_radius == 'default' %}--context-image-radius: {{ settings.images_and_sections_radius }};{% else %}--context-image-radius: {{ image_settings.context_image_radius }};{% endif %}" {% if settings.disable_right_click %}oncontextmenu="return false"{% endif %}>
+  {% else %}<div class="image ratio-{{ image_settings.image_ratio }}" style="{% if image_settings.context_image_radius == 'default' %}--context-image-radius: {{ settings.images_and_sections_radius }};{% else %}--context-image-radius: {{ image_settings.context_image_radius }};{% endif %}" {% if settings.disable_right_click %}oncontextmenu="return false"{% endif %}>{% endif %}
+    {% if image_settings.image %}
+      <img srcset="{%- if image_settings.image.width >= 165 -%}{{ image_settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+        {%- if image_settings.image.width >= 375 -%}{{ image_settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+        {%- if image_settings.image.width >= 550 -%}{{ image_settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+        {%- if image_settings.image.width >= 750 -%}{{ image_settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+        {%- if image_settings.image.width >= 1100 -%}{{ image_settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+        {%- if image_settings.image.width >= 1500 -%}{{ image_settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+        {%- if image_settings.image.width >= 1700 -%}{{ image_settings.image | image_url: width: 1700 }} 1700w,{%- endif -%}
+        {%- if image_settings.image.width >= 2000 -%}{{ image_settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+        {{ image_settings.image | image_url }} {{ image_settings.image.width }}w" src="{{ image_settings.image | image_url: height: image_settings.image.width }}" 
+        loading="lazy"
+        draggable="false"
+        {% if section.id contains 'main-product' %}
+          {% if section.settings.media_size == 'small' %}
+            sizes="(min-width: 750px) calc(100vw - 22rem),(min-width: {{ settings_page_width }}) calc({{ settings_page_width }} / 3 * 2), calc(100vw / 3 * 2)"
+          {% elsif section.settings.image_width == 'medium' %}
+          sizes="(min-width: 750px) calc(100vw - 22rem),(min-width: {{ settings_page_width }}) calc({{ settings_page_width }} / 2), calc(100vw / 2)"
+          {% else %}
+            sizes="(max-width: 768) calc(100vw - 22rem) ,(min-width: {{ settings_page_width }}) calc({{ settings_page_width }} / 3), calc(100vw / 3)"
+          {% endif %}
+        {% else %}
+          sizes="(max-width: 768px) 100vw, (min-width: {{ settings_page_width }}) {{ settings_page_width }}, 100vw"
+        {% endif %}
+        width="{{ image_settings.image.width }}" 
+        height="{{ image_settings.image.height }}" 
+        alt="{{ image_settings.image.alt | default: shop.name | escape }}" 
+        class="image__item"
+        style="object-position: {{ image_settings.image.presentation.focal_point }}"/>
+    {% else %}
+      {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  {% if image_settings.block_image_link != blank %}
+  </a>
+  {% else %}</div>{% endif %}
+</div>

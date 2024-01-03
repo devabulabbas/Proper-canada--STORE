@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "show_product_quantity": true,
+        "show_description": true,
+        "show_image": false,
+        "show_image_under_heading": false,
+        "banner_image_ratio": "super_wide",
+        "banner_focal_point": "center center",
+        "heading_size": "default",
+        "enable_filtering": true,
+        "filtering_style": "solid",
+        "products_per_page": 12,
+        "grid_type": "alternative_2",
+        "mobile_layout": "2",
+        "image_ratio": "square",
+        "focal_point": "center center",
+        "show_second_image": true,
+        "enable_add_to_cart": true,
+        "enable_quick_view": true,
+        "price_position": "with_title",
+        "show_vendor": true,
+        "max_product_name_characters": 100,
+        "show_rating": true,
+        "show_short_description": true,
+        "enable_color_pills": true,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

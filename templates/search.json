@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main-search": {
+      "type": "main-search",
+      "settings": {
+        "enable_filtering": true,
+        "filtering_style": "solid",
+        "results_per_page": 48,
+        "grid_type": "three_columns",
+        "mobile_layout": "2",
+        "image_ratio": "narrow_portrait",
+        "focal_point": "center center",
+        "show_second_image": true,
+        "enable_add_to_cart": true,
+        "enable_quick_view": true,
+        "price_position": "with_title",
+        "show_vendor": true,
+        "max_product_name_characters": 100,
+        "show_rating": true,
+        "show_short_description": true,
+        "enable_color_pills": true,
+        "show_date": true,
+        "show_author": false,
+        "show_number_of_comments": true,
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main-search"
+  ]
+}

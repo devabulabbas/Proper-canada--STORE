@@ -1,0 +1,864 @@
+{{ 'menu.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	.menu__item--minimal_uppercase .dropdown-icon,
+	.menu__item--minimal_basic .dropdown-icon,
+	.menu__item--classic .dropdown-icon,
+	.menu__item--avant_garde .dropdown-icon {
+	        height: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+	.menu__item--minimal_heavy .dropdown-icon,
+	.menu__item--brutalist .dropdown-icon,
+	.bottom-menu .menu__item--contrast .dropdown-icon,
+	.bottom-menu .menu__item--duet .dropdown-icon {
+		height: {{ 28 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+	.menu__item--contrast .dropdown-icon {
+		height: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+	.menu__item--duet .dropdown-icon,
+	.bottom-menu .menu__item--classic .dropdown-icon,
+	.bottom-menu .menu__item--avant_garde .dropdown-icon {
+		height: {{ 26 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+	.menu-container--main-sidebar .menu__list--main_menu .menu__item--classic .dropdown-icon,
+	.menu-container--menu-drawer .menu__list--main_menu .menu__item--classic .dropdown-icon,
+	.menu-container--footer .menu__list--main_menu .menu__item--classic .dropdown-icon,
+	.menu-container--main-sidebar .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+	.menu-container--menu-drawer .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+	.menu-container--footer .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+	.menu-container--main-sidebar .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+	.menu-container--menu-drawer .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+	.menu-container--footer .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+	.menu-container--main-sidebar .menu__list--main_menu .menu__item--brutalist .dropdown-icon,
+	.menu-container--menu-drawer .menu__list--main_menu .menu__item--brutalist .dropdown-icon,
+	.menu-container--footer .menu__list--main_menu .menu__item--brutalist .dropdown-icon {
+                height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+	.menu-container--main-sidebar .menu__list--main_menu .menu__item--duet .dropdown-icon,
+	.menu-container--menu-drawer .menu__list--main_menu .menu__item--duet .dropdown-icon,
+	.menu-container--footer .menu__list--main_menu .menu__item--duet .dropdown-icon {
+                height: {{ 28 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+	}
+        .heading_xl .dropdown-icon,
+	.heading_xl_uppercase .dropdown-icon {
+                height: {{ 128 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+	}
+        .heading_l .dropdown-icon,
+	.heading_l_uppercase .dropdown-icon,
+        .heading_xl .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_xl_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                height: {{ 96 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+	}
+	.heading_m .dropdown-icon,
+	.heading_m_uppercase .dropdown-icon,
+        .heading_l .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+        .heading_xl .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_xl_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+	}
+	.heading_s .dropdown-icon,
+	.heading_s_uppercase .dropdown-icon,
+        .heading_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_m .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_m_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+		height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+	}
+	.heading_xs .dropdown-icon,
+	.heading_xs_uppercase .dropdown-icon,
+	.heading_s .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_s_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_m .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_m_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+	}
+	.body_l .dropdown-icon,
+	.body_l_uppercase .dropdown-icon,
+	.heading_xs .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_xs_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_s .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_s_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                height: {{ 28 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+	}
+	.body_m .dropdown-icon,
+	.body_m_uppercase .dropdown-icon,
+	.body_l .menu__dropdown-container--one_level_down .dropdown-icon,
+	.body_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.heading_xs .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.heading_xs_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                height: {{ 26 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+	}
+	.body_s .dropdown-icon,
+	.body_s_uppercase .dropdown-icon,
+	.body_m .menu__dropdown-container--one_level_down .dropdown-icon,
+	.body_m_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.body_s .menu__dropdown-container--one_level_down .dropdown-icon,
+	.body_s_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.body_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.body_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.body_m .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.body_m_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.body_s .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.body_s_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                height: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+	}
+	.label_font .dropdown-icon,
+	.label_font_uppercase .dropdown-icon,
+	.label_font .menu__dropdown-container--one_level_down .dropdown-icon,
+	.label_font_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+	.label_font .menu__dropdown-container--two_levels_down .dropdown-icon,
+	.label_font_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon  {
+                height: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+	}
+        .heading_xl .menu__dropdown-container--one_level_down,
+	.heading_xl_uppercase .menu__dropdown-container--one_level_down {
+                line-height: {{ 96 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 80 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: none !important;
+	}
+        .heading_xl .menu__dropdown-container--one_level_down_uppercase,
+	.heading_xl_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                line-height: {{ 96 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 80 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: uppercase !important;
+	}
+        .heading_xl .menu__dropdown-container--two_levels_down,
+	.heading_xl_uppercase .menu__dropdown-container--two_levels_down,
+        .heading_l .menu__dropdown-container--one_level_down,
+	.heading_l_uppercase .menu__dropdown-container--one_level_down {
+                line-height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 48 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: none !important;
+	}
+        .heading_xl .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_xl_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+        .heading_l .menu__dropdown-container--one_level_down_uppercase,
+	.heading_l_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                line-height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 48 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: uppercase !important;
+	}
+        .heading_l .menu__dropdown-container--two_levels_down,
+	.heading_l_uppercase .menu__dropdown-container--two_levels_down,
+        .heading_m .menu__dropdown-container--one_level_down,
+	.heading_m_uppercase .menu__dropdown-container--one_level_down {
+                line-height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 32 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: none !important;
+	}
+	.heading_l .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_l_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_m .menu__dropdown-container--one_level_down_uppercase,
+	.heading_m_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                line-height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 32 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: uppercase !important;
+	}
+	.heading_s .menu__dropdown-container--one_level_down,
+	.heading_s_uppercase .menu__dropdown-container--one_level_down,
+	.heading_m .menu__dropdown-container--two_levels_down,
+	.heading_m_uppercase .menu__dropdown-container--two_levels_down {
+                line-height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: none !important;
+	}
+	.heading_s .menu__dropdown-container--one_level_down_uppercase,
+	.heading_s_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.heading_m .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_m_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                line-height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: uppercase !important;
+	}
+	.heading_xs .menu__dropdown-container--one_level_down,
+	.heading_xs_uppercase .menu__dropdown-container--one_level_down,
+	.heading_s .menu__dropdown-container--two_levels_down,
+	.heading_s_uppercase .menu__dropdown-container--two_levels_down {
+                line-height: {{ 28 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 18 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                text-transform: none !important;
+	}
+	.heading_xs .menu__dropdown-container--one_level_down_uppercase,
+	.heading_xs_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.heading_s .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_s_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                line-height: {{ 28 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                font-size: {{ 18 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                letter-spacing: 0.02em !important;
+                text-transform: uppercase !important;
+	}
+	.body_l .menu__dropdown-container--one_level_down,
+	.body_l_uppercase .menu__dropdown-container--one_level_down,
+	.heading_xs .menu__dropdown-container--two_levels_down,
+	.heading_xs_uppercase .menu__dropdown-container--two_levels_down {
+                line-height: {{ 26 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                text-transform: none !important;
+	}
+	.body_l .menu__dropdown-container--one_level_down_uppercase,
+	.body_l_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.heading_xs .menu__dropdown-container--two_levels_down_uppercase,
+	.heading_xs_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                line-height: {{ 26 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                letter-spacing: 0.02em !important;
+                text-transform: uppercase !important;
+	}
+	.body_m .menu__dropdown-container--one_level_down,
+	.body_m_uppercase .menu__dropdown-container--one_level_down,
+	.body_l .menu__dropdown-container--two_levels_down,
+	.body_l_uppercase .menu__dropdown-container--two_levels_down {
+                line-height: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 14 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                text-transform: none !important;
+	}
+	.body_m .menu__dropdown-container--one_level_down_uppercase,
+	.body_m_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.body_l .menu__dropdown-container--two_levels_down_uppercase,
+	.body_l_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                line-height: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 14 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                letter-spacing: 0.02em !important;
+                text-transform: uppercase !important;
+	}
+	.body_s .menu__dropdown-container--two_levels_down,
+	.body_s_uppercase .menu__dropdown-container--two_levels_down,
+	.body_m .menu__dropdown-container--two_levels_down,
+	.body_m_uppercase .menu__dropdown-container--two_levels_down,
+	.body_s .menu__dropdown-container--one_level_down,
+	.body_s_uppercase .menu__dropdown-container--one_level_down,
+	.label_font .menu__dropdown-container--one_level_down,
+	.label_font_uppercase .menu__dropdown-container--one_level_down,
+	.label_font .menu__dropdown-container--two_levels_down,
+	.label_font_uppercase .menu__dropdown-container--two_levels_down {
+                line-height: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 12 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                text-transform: none !important;
+	}
+	.body_s .menu__dropdown-container--two_levels_down_uppercase,
+	.body_s_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+	.body_m .menu__dropdown-container--two_levels_down_uppercase,
+	.body_m_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+	.body_s .menu__dropdown-container--one_level_down_uppercase,
+	.body_s_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.label_font .menu__dropdown-container--one_level_down_uppercase,
+	.label_font_uppercase .menu__dropdown-container--one_level_down_uppercase,
+	.label_font .menu__dropdown-container--two_levels_down_uppercase,
+	.label_font_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                line-height: {{ 16 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                font-size: {{ 12 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.02em !important;
+	}
+
+	@media screen and (max-width: 920px) {
+                .menu__item--minimal_uppercase .dropdown-icon,
+                .menu__item--minimal_basic .dropdown-icon,
+                .menu__item--classic .dropdown-icon,
+                .menu__item--avant_garde .dropdown-icon {
+                        height: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .menu__item--minimal_heavy .dropdown-icon,
+                .menu__item--brutalist .dropdown-icon,
+                .bottom-menu .menu__item--contrast .dropdown-icon,
+                .bottom-menu .menu__item--duet .dropdown-icon {
+                        height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .menu__item--contrast .dropdown-icon {
+                        height: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .menu__item--duet .dropdown-icon,
+                .bottom-menu .menu__item--classic .dropdown-icon,
+                .bottom-menu .menu__item--avant_garde .dropdown-icon {
+                        height: {{ 26 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .menu-container--main-sidebar .menu__list--main_menu .menu__item--classic .dropdown-icon,
+                .menu-container--menu-drawer .menu__list--main_menu .menu__item--classic .dropdown-icon,
+                .menu-container--footer .menu__list--main_menu .menu__item--classic .dropdown-icon,
+                .menu-container--main-sidebar .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+                .menu-container--menu-drawer .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+                .menu-container--footer .menu__list--main_menu .menu__item--avant_garde .dropdown-icon,
+                .menu-container--main-sidebar .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+                .menu-container--menu-drawer .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+                .menu-container--footer .menu__list--main_menu .menu__item--contrast .dropdown-icon,
+                .menu-container--main-sidebar .menu__list--main_menu .menu__item--brutalist .dropdown-icon,
+                .menu-container--menu-drawer .menu__list--main_menu .menu__item--brutalist .dropdown-icon,
+                .menu-container--footer .menu__list--main_menu .menu__item--brutalist .dropdown-icon {
+                        height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .menu-container--main-sidebar .menu__list--main_menu .menu__item--duet .dropdown-icon,
+                .menu-container--menu-drawer .menu__list--main_menu .menu__item--duet .dropdown-icon,
+                .menu-container--footer .menu__list--main_menu .menu__item--duet .dropdown-icon {
+                        height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px;
+                }
+                .heading_xl .dropdown-icon,
+                .heading_xl_uppercase .dropdown-icon {
+                        height: {{ 128 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_l .dropdown-icon,
+                .heading_l_uppercase .dropdown-icon,
+                .heading_xl .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                        height: {{ 96 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_m .dropdown-icon,
+                .heading_m_uppercase .dropdown-icon,
+                .heading_l .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xl .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 64 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_s .dropdown-icon,
+                .heading_s_uppercase .dropdown-icon,
+                .heading_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_m .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                        height: {{ 46 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                }
+                .heading_xs .dropdown-icon,
+                .heading_xs_uppercase .dropdown-icon,
+                .heading_s .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_s_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_m .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                }
+                .body_l .dropdown-icon,
+                .body_l_uppercase .dropdown-icon,
+                .heading_xs .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xs_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_s .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_s_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                }
+                .body_m .dropdown-icon,
+                .body_m_uppercase .dropdown-icon,
+                .body_l .menu__dropdown-container--one_level_down .dropdown-icon,
+                .body_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xs .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_xs_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 26 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                }
+                .body_s .dropdown-icon,
+                .body_s_uppercase .dropdown-icon,
+                .body_m .menu__dropdown-container--one_level_down .dropdown-icon,
+                .body_m_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .body_s .menu__dropdown-container--one_level_down .dropdown-icon,
+                .body_s_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .body_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .body_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .body_m .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .body_m_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .body_s .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .body_s_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                }
+                .label_font .dropdown-icon,
+                .label_font_uppercase .dropdown-icon,
+                .label_font .menu__dropdown-container--one_level_down .dropdown-icon,
+                .label_font_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .label_font .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .label_font_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon  {
+                        height: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                }
+
+                .heading_xl .menu__dropdown-container--one_level_down,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down {
+                        line-height: {{ 96 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 80 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: none !important;
+                }
+                .heading_xl .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 96 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 80 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: uppercase !important;
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_l .menu__dropdown-container--one_level_down,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down {
+                        line-height: {{ 64 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 48 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: none !important;
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l .menu__dropdown-container--one_level_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 64 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 48 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: uppercase !important;
+                }
+                .heading_l .menu__dropdown-container--two_levels_down,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_m .menu__dropdown-container--one_level_down,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down {
+                        line-height: {{ 46 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 32 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: none !important;
+                }
+                .heading_l .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_m .menu__dropdown-container--one_level_down_uppercase,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 46 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 32 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: uppercase !important;
+                }
+                .heading_s .menu__dropdown-container--one_level_down,
+                .heading_s_uppercase .menu__dropdown-container--one_level_down,
+                .heading_m .menu__dropdown-container--two_levels_down,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down {
+                        line-height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: none !important;
+                }
+                .heading_s .menu__dropdown-container--one_level_down_uppercase,
+                .heading_s_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_m .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: uppercase !important;
+                }
+                .heading_xs .menu__dropdown-container--one_level_down,
+                .heading_xs_uppercase .menu__dropdown-container--one_level_down,
+                .heading_s .menu__dropdown-container--two_levels_down,
+                .heading_s_uppercase .menu__dropdown-container--two_levels_down {
+                        line-height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 18 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        text-transform: none !important;
+                }
+                .heading_xs .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xs_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_s .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_s_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 18 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                        letter-spacing: 0.02em !important;
+                        text-transform: uppercase !important;
+                }
+                .body_l .menu__dropdown-container--one_level_down,
+                .body_l_uppercase .menu__dropdown-container--one_level_down,
+                .heading_xs .menu__dropdown-container--two_levels_down,
+                .heading_xs_uppercase .menu__dropdown-container--two_levels_down {
+                        line-height: {{ 26 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        text-transform: none !important;
+                }
+                .body_l .menu__dropdown-container--one_level_down_uppercase,
+                .body_l_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xs .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_xs_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 26 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        letter-spacing: 0.02em !important;
+                        text-transform: uppercase !important;
+                }
+                .body_m .menu__dropdown-container--one_level_down,
+                .body_m_uppercase .menu__dropdown-container--one_level_down,
+                .body_l .menu__dropdown-container--two_levels_down,
+                .body_l_uppercase .menu__dropdown-container--two_levels_down {
+                        line-height: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 14 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        text-transform: none !important;
+                }
+                .body_m .menu__dropdown-container--one_level_down_uppercase,
+                .body_m_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .body_l .menu__dropdown-container--two_levels_down_uppercase,
+                .body_l_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 14 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        letter-spacing: 0.02em !important;
+                        text-transform: uppercase !important;
+                }
+                .body_s .menu__dropdown-container--two_levels_down,
+                .body_s_uppercase .menu__dropdown-container--two_levels_down,
+                .body_m .menu__dropdown-container--two_levels_down,
+                .body_m_uppercase .menu__dropdown-container--two_levels_down,
+                .body_s .menu__dropdown-container--one_level_down,
+                .body_s_uppercase .menu__dropdown-container--one_level_down,
+                .label_font .menu__dropdown-container--one_level_down,
+                .label_font_uppercase .menu__dropdown-container--one_level_down,
+                .label_font .menu__dropdown-container--two_levels_down,
+                .label_font_uppercase .menu__dropdown-container--two_levels_down {
+                        line-height: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 12 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        text-transform: none !important;
+                }
+                .body_s .menu__dropdown-container--two_levels_down_uppercase,
+                .body_s_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .body_m .menu__dropdown-container--two_levels_down_uppercase,
+                .body_m_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .body_s .menu__dropdown-container--one_level_down_uppercase,
+                .body_s_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .label_font .menu__dropdown-container--one_level_down_uppercase,
+                .label_font_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .label_font .menu__dropdown-container--two_levels_down_uppercase,
+                .label_font_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 16 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 }}px !important;
+                        font-size: {{ 12 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 }}px !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 0.02em !important;
+                }
+	}
+        @media screen and (max-width: 1440px) {
+                .heading_xl .dropdown-icon,
+                .heading_xl_uppercase .dropdown-icon {
+                        height: {{ 96 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                        height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+
+                .heading_xl .menu__dropdown-container--one_level_down,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down,
+                .heading_xl .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 48 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_xl .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 32 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+        }
+        @media screen and (max-width: 1024px) {
+                .heading_xl .dropdown-icon,
+                .heading_xl_uppercase .dropdown-icon,
+                .heading_l .dropdown-icon,
+                .heading_l_uppercase .dropdown-icon {
+                        height: {{ 64 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_l .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                        height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--one_level_down,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down,
+                .heading_xl .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_l .menu__dropdown-container--one_level_down,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down,
+                .heading_l .menu__dropdown-container--one_level_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 46 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 32 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_xl .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l .menu__dropdown-container--two_levels_down,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_l .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 36 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 24 | times: settings.desktop_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+        }
+        @media screen and (max-width: 768px) {
+                .heading_xl .dropdown-icon,
+                .heading_xl_uppercase .dropdown-icon,
+                .heading_l .dropdown-icon,
+                .heading_l_uppercase .dropdown-icon,
+                .heading_m .dropdown-icon,
+                .heading_m_uppercase .dropdown-icon {
+                        height: {{ 46 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_l .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_m .menu__dropdown-container--one_level_down .dropdown-icon,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down .dropdown-icon {
+                        height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_l .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_m .menu__dropdown-container--two_levels_down .dropdown-icon,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down .dropdown-icon {
+                        height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;	
+                }
+                .heading_xl .menu__dropdown-container--one_level_down,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down,
+                .heading_xl .menu__dropdown-container--one_level_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_l .menu__dropdown-container--one_level_down,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down,
+                .heading_l .menu__dropdown-container--one_level_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--one_level_down_uppercase,
+                .heading_m .menu__dropdown-container--one_level_down,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down,
+                .heading_m .menu__dropdown-container--one_level_down_uppercase,
+                .heading_m_uppercase .menu__dropdown-container--one_level_down_uppercase {
+                        line-height: {{ 36 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 24 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+                .heading_xl .menu__dropdown-container--two_levels_down,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_xl .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_xl_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l .menu__dropdown-container--two_levels_down,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_l .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_l_uppercase .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_m .menu__dropdown-container--two_levels_down,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down,
+                .heading_m .menu__dropdown-container--two_levels_down_uppercase,
+                .heading_m_uppercase .menu__dropdown-container--two_levels_down_uppercase {
+                        line-height: {{ 28 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 16 | at_most: 128 }}px !important;
+                        font-size: {{ 18 | times: settings.mobile_font_scale | divided_by: 100.0 | round | at_least: 12 | at_most: 128 }}px !important;
+                }
+        }
+{% endstyle %}
+
+{%- liquid
+        if section.id contains 'menu-drawer' or section.id contains 'main-sidebar'
+                if settings.typography_preset == 'classic' or settings.typography_preset == 'brutalist' or settings.typography_preset == 'duet'
+                        assign weight = settings.accent_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.base_icon_weight
+                        endif
+                else 
+                        assign weight =  settings.base_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.accent_icon_weight
+                        endif
+                endif
+        elsif section.id contains 'header' and type != 'secondary_menu' and type != 'main_menu'
+                if settings.typography_preset == 'classic' or settings.typography_preset == 'contrast' or settings.typography_preset == 'duet'
+                        assign weight = settings.accent_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.base_icon_weight
+                        endif
+                else 
+                        assign weight =  settings.base_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.accent_icon_weight
+                        endif
+                endif
+        elsif section.id contains 'secondary-header' and type != 'secondary_menu' and type != 'main_menu'
+                if settings.typography_preset == 'classic' or settings.typography_preset == 'contrast' or settings.typography_preset == 'duet'
+                        assign weight = settings.accent_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.base_icon_weight
+                        endif
+                else 
+                        assign weight =  settings.base_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.accent_icon_weight
+                        endif
+                endif
+        else 
+                if settings.typography_preset == 'avant_garde'
+                        assign weight = settings.accent_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.base_icon_weight
+                        endif
+                else 
+                        assign weight =  settings.base_icon_weight
+                        if settings.swap_fonts
+                                assign weight = settings.accent_icon_weight
+                        endif
+                endif
+        endif
+-%}
+
+
+<div class="menu-container {% if section.id contains 'header' %}menu-container--header{% elsif section.id contains 'footer' %}menu-container--footer{% else %}menu-container--{{ section.id }}{% endif %} menu-container--{{ section.settings.grid_columns }} menu-container--{{ menu_settings.block_width }} menu-container--{{ type }}" data-block-index="{{ for_loop.index0 }}" 
+     style="--menu-vertical-alignment: {{ menu_settings.menu_vertical_alignment }}; --menu-horizontal-alignment: {{ menu_settings.menu_horizontal_alignment }}; --item-index: {{ for_loop.index }}" {{ block_item.shopify_attributes }}>
+    <menu-dropdown>
+        <nav class="menu__navigation {% if menu_settings.menu_vertical_alignment == 'space-between' or menu_settings.menu_horizontal_alignment == 'space-between' %}menu__navigation--stretched{% endif %}">
+            <ul class="menu__list 
+                    menu__list--{{ settings.white_space }} 
+                    {% if section.id contains 'header' %}menu__list--header{% elsif section.id contains 'footer' %}menu__list--footer{% else %}menu__list--{{ section.id }}{% endif %}
+                    menu__list--{{ type }} 
+                    menu__list--{{ menu_settings.menu_view }}
+                    menu__list--{{ menu_settings.menu_horizontal_alignment }}
+                    {% if menu_settings.dim_text and type == 'secondary_menu' %}dim{% endif %}"
+                role="list">
+                {%- for link in menu_settings_id.links -%}
+                    <li class="menu__item menu__item--{{ settings.typography_preset }} {% if type == 'main_menu' and menu_settings.menu_font_size != 'default' and section.id contains 'footer' or section.id contains 'main-sidebar' or section.id contains 'menu-drawer' %}{{ menu_settings.menu_font_size }}{% endif %} {% if section.settings.color_type == 'custom' %}color-custom{% elsif section.settings.color_type == 'invert' %}color-invert{% endif %} {% if menu_settings.use_accent_color and type == 'main_menu' %}color-accent{% endif %}">
+                        <div class="{{ menu_settings.dropdown_link }} menu__item-title menu__item-title--first-level  {% if link.url == request.path and settings.underline_active_link == true %}menu__item-title--underline{% endif %}
+							{% if menu_settings.menu_style == 'expanded' %}menu__item-title--expanded
+							{% elsif menu_settings.menu_style == 'collapsible' or section.id contains 'menu-drawer' %}menu__item-title--collapsible
+							{% elsif menu_settings.menu_style == 'slide_out' and section.id contains 'main-sidebar' %}menu__item-title--slide_out
+							{% elsif section.id contains 'header' or section.id contains 'secondary-header' %}menu__item-title--header{% endif %}
+                                                        {% if menu_settings.menu_style == 'slide_out' and link.links.size > 0 %}menu__item-title--hover{% endif %}
+							{% if settings.allow_transparent_navigation and settings.navigation_layout == 'sidebar_based' and section.id contains 'sidebar' and section.settings.color_type == 'default' %}scroll-color{% endif %}">
+                            <a class="menu__item-link hover-link" href="{{ link.url }}" {% if link.url contains 'http://' or link.url contains 'https://' %}target="_blank"{% endif %}>
+                                <div class="menu__item-link-title {% if link.current and settings.underline_active_link == true %}underline-active{% endif %} {% if settings.enable_animated_underline and settings.enable_rolling_hover == false %}link-animation--underline{% elsif settings.enable_rolling_hover %}link-animation--slide{% else %}link-animation{% endif %}">
+									<span data-hover="{{ link.title }}">{{ link.title }}</span>
+                                </div>
+                            </a>
+                            {% unless section.id contains 'footer' %}
+                                {%- if link.links.size > 0 and type != 'secondary_menu' and menu_settings.menu_style != 'expanded' and  menu_settings.menu_view != 'row' -%}
+                                        {% if menu_settings.menu_style == 'slide_out' %}
+                                                <div class="dropdown-icon dropdown-icon--chevron dropdown-icon--first-level" tabindex="0"> 		
+                                                        {% if weight == 'regular' %}
+                                                                {% render 'icon', icon: 'close-chevron-regular' %}
+                                                        {% elsif weight == 'medium' %}
+                                                                {% render 'icon', icon: 'close-chevron-medium' %}
+                                                        {% elsif weight == 'bold' %}
+                                                                {% render 'icon', icon: 'close-chevron-bold' %}
+                                                        {% endif %}
+                                                </div>
+                                        {% elsif section.id contains 'menu-drawer' or section.id contains 'header' or section.id contains 'secondary-header' or menu_settings.menu_style == 'collapsible' %}
+                                        {%- if settings.dropdown_icon == 'chevron' -%}
+                                                <div class="dropdown-icon dropdown-icon--chevron dropdown-icon--first-level" tabindex="0">				
+                                                        {% if weight == 'regular' %}
+                                                                {% render 'icon', icon: 'close-chevron-regular' %}
+                                                        {% elsif weight == 'medium' %}
+                                                                {% render 'icon', icon: 'close-chevron-medium' %}
+                                                        {% elsif weight == 'bold' %}
+                                                                {% render 'icon', icon: 'close-chevron-bold' %}
+                                                        {% endif %}					
+                                                </div>   
+                                        {%- elsif settings.dropdown_icon == 'plus' -%}
+                                                <div class="dropdown-icon dropdown-icon--plus dropdown-icon--first-level" tabindex="0">				
+                                                        {% if weight == 'regular' %}
+                                                                {% render 'icon', icon: 'plus-regular' %}
+                                                        {% elsif weight == 'medium' %}
+                                                                {% render 'icon', icon: 'plus-medium' %}
+                                                        {% elsif weight == 'bold' %}
+                                                                {% render 'icon', icon: 'plus-bold' %}
+                                                        {% endif %}				
+                                                </div>
+                                                <div class="dropdown-icon dropdown-icon--minus dropdown-icon--first-level" tabindex="-1">				
+                                                        {% if weight == 'regular' %}
+                                                                {% render 'icon', icon: 'minus-regular' %}
+                                                        {% elsif weight == 'medium' %}
+                                                                {% render 'icon', icon: 'minus-medium' %}
+                                                        {% elsif weight == 'bold' %}
+                                                                {% render 'icon', icon: 'minus-bold' %}
+                                                        {% endif %}				
+                                                </div>
+                                        {%- endif -%}
+                                        {% endif %}
+                                {% endif %}
+                            {% endunless %}
+                        </div>
+                                {%- liquid
+                                        assign enable_mega_menu = false
+                                        assign link_title_handle = link.title | handle
+
+                                        for block in blocks
+                                                assign menu_title_handle = block.settings.dropdown_link | handle
+                                                assign mega_menu_width = block.settings.width
+                                                assign mega_menu_title = block.settings.menu_heading
+                                                if menu_title_handle == link_title_handle
+                                                assign enable_mega_menu = true
+                                                assign mega_menu_block = block.settings
+                                                assign mega_menu_block_id = block.id
+                                                endif
+                                        endfor
+                                -%}
+                                {%- if link.links.size > 0 and type != 'secondary_menu' and section.id != 'footer' or link.links.size > 0 and type != 'secondary_menu' and section.id == 'secondary-header' or link.links.size > 0 and type != 'secondary_menu' and section.id == 'header' or link.links.size > 0 and type != 'secondary_menu' and section.id != 'menu-drawer' -%}
+                                        <div class="menu__dropdown-container {% if enable_mega_menu and section.id == 'header' or enable_mega_menu and section.id == 'secondary-header' %}mega-menu mega-menu--{{ mega_menu_block.width }}{% endif %} menu__dropdown-container--{{ settings.white_space }} {% if section.settings.color_type == 'custom' %}color-custom{% elsif section.settings.color_type == 'invert' %}color-invert{% endif %} {% if menu_settings.use_accent_color and type == 'main_menu' %}color-accent{% endif %} {% unless menu_settings.nested_menu_size == 'disable' %}menu__dropdown-container--{{ menu_settings.nested_menu_size }}{% endunless %}">
+                                                        {% style %}
+                                                                .menu__list--header .menu__dropdown-container {
+                                                                        --layout-text-color: 
+                                                                        {{ settings.layout_text_color.red }},
+                                                                        {{ settings.layout_text_color.green }}, 
+                                                                        {{ settings.layout_text_color.blue }};
+                                                                }
+                                                        {% endstyle %}
+                                                        {%- if enable_mega_menu and section.id == 'header' or enable_mega_menu and section.id == 'secondary-header' -%}
+                                                                {% render 'mega-menu', link: link, block: mega_menu_block, id: mega_menu_block_id, mega_block: block %}
+                                                                {{ 'mega-menu.css' | asset_url | stylesheet_tag }}
+                                                        {%- endif -%}
+                                                        {% if section.id contains 'main-sidebar' and menu_settings.menu_style == 'slide_out' %}<div class="slide-out-container">{% endif %}
+                                                                <ul class="menu__dropdown-child">
+                                                                        {% for child_link in link.links %}
+                                                                                <li class="menu__dropdown-child-item">
+                                                                                        <div class="menu__item-title menu__item-title--second-level
+                                                                                                {% if settings.allow_transparent_navigation and settings.navigation_layout == 'sidebar_based' and section.id contains 'sidebar' and section.settings.color_type == 'default' and menu_settings.menu_style != 'slide_out' %}scroll-color{% endif %}">
+                                                                                                <a class="menu__dropdown-child-item-link hover-link" href="{{ child_link.url }}" {% if child_link.url contains 'http://' or child_link.url contains 'https://' %}target="_blank"{% endif %} {% if menu_settings.menu_style == 'expanded' %}tabindex="0"{% else %}tabindex="-1"{% endif %}>
+                                                                                                        <div class="menu__item-link-title {% if settings.enable_animated_underline and settings.enable_rolling_hover == false %}link-animation--underline{% elsif settings.enable_rolling_hover %}link-animation--slide{% else %}link-animation{% endif %} {% if child_link.current and settings.underline_active_link == true %}underline-active{% endif %} {% if settings.enable_animated_underline and settings.enable_rolling_hover == false %}link-animation--underline{% elsif settings.enable_rolling_hover %}link-animation--slide{% else %}link-animation{% endif %}">
+                                                                                                                <span data-hover="{{ child_link.title }}">{{ child_link.title }}</span>
+                                                                                                        </div>
+                                                                                                </a>
+                                                                                                {% if child_link.links.size > 0 %}
+                                                                                                        {%- if settings.dropdown_icon == 'chevron' -%}
+                                                                                                        <div class="dropdown-icon dropdown-icon--chevron dropdown-icon--second-level" tabindex="0">
+                                                                                                                        {% if weight == 'regular' %}
+                                                                                                                                        {% render 'icon', icon: 'close-chevron-regular' %}
+                                                                                                                        {% elsif weight == 'medium' %}
+                                                                                                                                        {% render 'icon', icon: 'close-chevron-medium' %}
+                                                                                                                        {% elsif weight == 'bold' %}
+                                                                                                                                        {% render 'icon', icon: 'close-chevron-bold' %}
+                                                                                                                        {% endif %}
+                                                                                                        </div>
+                                                                                                        {%- elsif settings.dropdown_icon == 'plus' -%}
+                                                                                                        <div class="dropdown-icon dropdown-icon--plus dropdown-icon--second-level" tabindex="0">
+                                                                                                                        {% if weight == 'regular' %}
+                                                                                                                                        {% render 'icon', icon: 'plus-regular' %}
+                                                                                                                        {% elsif weight == 'medium' %}
+                                                                                                                                        {% render 'icon', icon: 'plus-medium' %}
+                                                                                                                        {% elsif weight == 'bold' %}
+                                                                                                                                        {% render 'icon', icon: 'plus-bold' %}
+                                                                                                                        {% endif %}
+                                                                                                        </div>
+                                                                                                        <div class="dropdown-icon dropdown-icon--minus dropdown-icon--second-level" tabindex="-1">
+                                                                                                                        {% if weight == 'regular' %}
+                                                                                                                                        {% render 'icon', icon: 'minus-regular' %}
+                                                                                                                        {% elsif weight == 'medium' %}
+                                                                                                                                        {% render 'icon', icon: 'minus-medium' %}
+                                                                                                                        {% elsif weight == 'bold' %}
+                                                                                                                                        {% render 'icon', icon: 'minus-bold' %}
+                                                                                                                        {% endif %}
+                                                                                                        </div>
+                                                                                                        {%- endif -%}
+                                                                                                {% endif %}
+                                                                                        </div>
+                                                                                        {% if child_link.links.size > 0 %}
+                                                                                                <div class="menu__dropdown-grandchild-container">
+                                                                                                        <ul class="menu__dropdown-grandchild">
+                                                                                                        {% for grandchild_link in child_link.links %}
+                                                                                                                <li class="menu__dropdown-grandchild-item {% if settings.allow_transparent_navigation and settings.navigation_layout == 'sidebar_based' and section.id contains 'sidebar' and section.settings.color_type == 'default' and menu_settings.menu_style != 'slide_out' %}scroll-color{% endif %}">
+                                                                                                                <a class="menu__dropdown-grandchild-link hover-link" href="{{ grandchild_link.url }}" {% if grandchild_link.url contains 'http://' or grandchild_link.url contains 'https://' %}target="_blank"{% endif %} tabindex="-1">
+                                                                                                                        <div class="menu__item-link-title {% if settings.enable_animated_underline and settings.enable_rolling_hover == false %}link-animation--underline{% elsif grandchild_link.current and settings.underline_active_link == true %}underline-active{% endif %} {% if settings.enable_animated_underline and settings.enable_rolling_hover == false %}link-animation--underline{% elsif settings.enable_rolling_hover %}link-animation--slide{% else %}link-animation{% endif %}">
+                                                                                                                                <span data-hover="{{ grandchild_link.title }}">{{ grandchild_link.title }}</span>
+                                                                                                                        </div>
+                                                                                                                </a>
+                                                                                                                </li>
+                                                                                                        {% endfor %}
+                                                                                                        </ul>
+                                                                                                </div>
+                                                                                        {% endif %}
+                                                                                </li>
+                                                                        {% endfor %}
+                                                                </ul>
+                                                        {% if section.id contains 'main-sidebar' and menu_settings.menu_style == 'slide_out' %}</div>{% endif %}
+                                                </div>
+                                {% endif %}
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </nav>
+    </menu-dropdown>
+</div>

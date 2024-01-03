@@ -1,0 +1,48 @@
+{% liquid
+  assign settings_page_width = settings.max_page_width | append: 'px'
+  if settings.max_page_width == 'full_width'
+  assign settings_page_width = '100vw'
+  endif
+%}
+<a class="card-collection" href="{{ card_collection.url }}">
+  {%- if card_collection.featured_image -%}
+    <div class="card__media">
+      <div class="media ratio-{{ image_ratio }}" {% if settings.disable_right_click %}oncontextmenu="return false"{% endif %}>
+        <img srcset="{%- if card_collection.featured_image.width >= 165 -%}{{ card_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+          {%- if card_collection.featured_image.width >= 375 -%}{{ card_collection.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if card_collection.featured_image.width >= 550 -%}{{ card_collection.featured_image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if card_collection.featured_image.width >= 750 -%}{{ card_collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if card_collection.featured_image.width >= 1100 -%}{{ card_collection.featured_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if card_collection.featured_image.width >= 1500 -%}{{ card_collection.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {{ card_collection.featured_image | image_url }} {{ card_collection.featured_image.width }}w" src="{{ card_collection.featured_image | image_url: width: 1700 }}"
+          {% if section.settings.grid_type == 'two_columns' %}
+          sizes="
+          (min-width: {{ settings_page_width }}) calc(({{ settings_page_width }} - 200px) / 2),
+          (min-width: 750px) calc((100vw - 2rem) / 2),
+          calc((100vw - 3rem)/2)"
+          {% elsif section.settings.grid_type == 'alternative_1' %}
+          sizes="
+          (min-width: {{ settings_page_width }}) calc(({{ settings_page_width }} - 200px) * 0.7),
+          (min-width: 750px) calc((100vw - 2rem) * 0.7),
+          calc((100vw - 3rem) * 0.7)"
+          {% elsif section.settings.grid_type == 'alternative_2' %}
+          sizes="
+          (min-width: {{ settings_page_width }}) calc({{ settings_page_width }} - 200px),
+          (min-width: 750px) calc(100vw - 2rem),
+          calc(100vw - 3rem)"
+          {% endif %}
+          alt="{{ card_collection.title | escape }}" draggable="false" loading="lazy" width="{{ card_collection.featured_image.width }}" height="{{ card_collection.featured_image.height }}" class="card__image">
+      </div>
+    </div>
+  {%- else -%}
+    <div class="card__media-placeholder">
+      <div class="media ratio-{{ section.settings.image_ratio }}">
+        {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    </div>
+  {%- endif -%}
+  <h2 class="card__title card__title--{{ settings.typography_preset }} {% if settings.center_text %} center{% endif %}">{{ card_collection.title | escape }}
+    {%- if section.settings.show_number == true -%}<span class="heading__details">({{ card_collection.all_products_count }})</span>
+    {%- endif -%}
+  </h2>
+</a>

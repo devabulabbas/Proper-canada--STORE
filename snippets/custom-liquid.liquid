@@ -1,0 +1,3 @@
+{%- if block.settings.custom_liquid != blank -%}
+    <div class="custom-liquid body-text--{{ settings.typography_preset }}" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
+{%- endif -%}

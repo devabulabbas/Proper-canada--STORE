@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "9611120f-1883-4d25-81e4-0eb3ec2cc2db": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15091190628467__9611120f-1883-4d25-81e4-0eb3ec2cc2db-1683624295fccf56c9-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact",
+            "heading_size": "heading_xl_uppercase",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--15091190628467__9611120f-1883-4d25-81e4-0eb3ec2cc2db-1683624295fccf56c9-1"
+      ],
+      "settings": {
+        "section_width": "wide",
+        "center_text": false,
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "83462665-e357-4caf-9a75-170b1ba75762": {
+      "type": "contact-form",
+      "blocks": {
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our store",
+            "heading_size": "default",
+            "heading_tag": "h3"
+          }
+        },
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-0": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Subheading",
+            "subheading_size": "default",
+            "subheading_tag": "h4"
+          }
+        },
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share your address and payment methods. Describe how to find your local store or how long it might take you to respond to an email. Attach a photo of the entrance.<\/p>",
+            "dim_text": true
+          }
+        },
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-3": {
+          "type": "contacts",
+          "settings": {
+            "contacts_subheading": "Contact",
+            "subheading_size": "default",
+            "contacts_1": "hello@shopifystore.com",
+            "contacts_1_type": "email",
+            "contacts_2": "123-456-7890",
+            "contacts_2_type": "phone_number",
+            "use_accent_color": false,
+            "contacts_description": "Mon–Fri, 10AM–9PM"
+          }
+        },
+        "2cca0ed0-35ae-4827-8f70-c85b75943ebe": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d5445.531852302012!2d-122.40733128805128!3d37.78928521248307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858089ce1b5ea9%3A0xd114369f1c32541e!2sShopify%20San%20Francisco%20Office!5e0!3m2!1sen!2spl!4v1686302012498!5m2!1sen!2spl\" width=\"100%\" height=\"400\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>"
+          }
+        },
+        "70c6565c-0451-426e-8eda-fe6422f41c8d": {
+          "type": "social_media",
+          "settings": {
+            "social_media_heading": "",
+            "social_media_heading_size": "default",
+            "social_media_style": "logo_in_circle",
+            "use_accent_color": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-1",
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-0",
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-2",
+        "template--15091190628467__83462665-e357-4caf-9a75-170b1ba75762-168362428402bf1696-3",
+        "2cca0ed0-35ae-4827-8f70-c85b75943ebe",
+        "70c6565c-0451-426e-8eda-fe6422f41c8d"
+      ],
+      "settings": {
+        "swap_position": false,
+        "narrow_content": false,
+        "heading": "Get in touch",
+        "heading_size": "default",
+        "heading_tag": "h2",
+        "show_container": true,
+        "name_placeholder": "",
+        "email_placeholder": "",
+        "show_phone": true,
+        "phone_placeholder": "",
+        "show_message": true,
+        "message_placeholder": "",
+        "color_type": "default",
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "desktop_padding_top": -160,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": -80,
+        "mobile_padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "9611120f-1883-4d25-81e4-0eb3ec2cc2db",
+    "83462665-e357-4caf-9a75-170b1ba75762"
+  ]
+}
